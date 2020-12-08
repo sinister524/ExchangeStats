@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователи</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<header th:insert="fragments/nav-bar :: nav-bar"></header>
+
+<div class="container">
+    <div>
+        <p></p>
+        <hr class="mb-4">
+        <form method="get" action="/stats/accounts/max-value">
+            <label for="maxValue">Показать аккаунты с максимальной конвертацией больше (в $):</label>
+            <input id="maxValue" name="maxValue" type="number">
+            <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Поиск</button>
+        </form>
+        <form method="get" action="/stats/accounts/total-value">
+            <label for="totalValue">Показать аккаунты с общей конвертацией больше (в $):</label>
+            <input id="totalValue" name="totalValue" type="number">
+            <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Поиск</button>
+        </form>
+        <hr class="mb-4">
+    </div>
+    <div>
+        <p></p>
+        <h4>Пользователи</h4>
+        <p></p>
+        <table class="table">
+            <tr>
+                <th>Имя пользователя</th>
+                <th>Email</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Максимальная конвертация (в $)</th>
+                <th>Общая сумма конвртации (в $)</th>
+                <th>Подробнее</th>
+            </tr>
+            <tr th:each="account : ${accounts}">
+                <td th:text="${account.username}">username</td>
+                <td th:text="${account.email}">Email</td>
+                <td th:text="${account.firstName}">first name</td>
+                <td th:text="${account.lastName}">last name</td>
+                <td th:text="${account.maxExchangeToString()}">Max exchange</td>
+                <td th:text="${account.totalExchangeToString()}">Total exchange</td>
+                <td><a class="btn btn-outline-success my-2 my-sm-0" th:href="'/stats/accounts/' + ${account.id}">Подробнее</a></td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>

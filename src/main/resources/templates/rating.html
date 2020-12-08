@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Рейтинг направлений конвертации валют</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<header th:insert="fragments/nav-bar :: nav-bar"></header>
+
+<div class="container">
+    <p></p>
+    <h4>Рейтинг направлений конвертации валют</h4>
+    <p></p>
+    <div>
+        <table class="table">
+            <tr>
+                <th>Валюта</th>
+                <th>Колличество операций</th>
+            </tr>
+            <tr th:each="rating : ${ratings}">
+                <td th:text="${rating.currencyCharCode}">Currency</td>
+                <td th:text="${rating.count}">count</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Статистика</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<header th:insert="fragments/nav-bar :: nav-bar"></header>
+
+<div class="container">
+    <p></p>
+    <h4>Операции</h4>
+    <p></p>
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+        <hr class="mb-4">
+        <span><a class="btn btn-outline-success my-2 my-sm-0" href="/stats/rating">Рейтинг направлений конвертации валют</a> </span>
+        <span><a class="btn btn-outline-success my-2 my-sm-0" href="/stats/accounts">Пользователи</a></span>
+        <hr class="mb-4">
+    </div>
+    <div>
+        <table class="table">
+            <tr>
+                <th>Время</th>
+                <th>Пользователь</th>
+                <th>Исходная сумма</th>
+                <th>Исходная валюта</th>
+                <th>Сконвертированная сумма</th>
+                <th>Сконвертированная валюта</th>
+            </tr>
+            <tr th:each="exchange : ${exchanges}">
+                <td th:text="${exchange.timeStamp}">Time</td>
+                <td th:text="${exchange.account.username}">Username</td>
+                <td th:text="${exchange.valueToString}">Value</td>
+                <td th:text="${exchange.currency}">Currency</td>
+                <td th:text="${exchange.exchangeValueToString()}">Exchange value</td>
+                <td th:text="${exchange.exchangeCurrency}">Exchange currency</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Конвертер валют</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="fragments/nav-bar :: nav-bar"></header>
+<div class="container">
+    <p></p>
+    <h4>Конвертер валют</h4>
+    <p></p>
+    <form method="post">
+        <span>
+            <select required name="from">
+                <option th:each="currency : ${currencies}" th:value="${currency.charCode}" th:text="${currency.toString()}">Валюта</option>
+            </select>
+        </span>
+        <span>
+            <select required name="to">
+                <option th:each="currency : ${currencies}"  th:value="${currency.charCode}" th:text="${currency.toString()}">Валюта</option>
+            </select>
+        </span>
+        <span>
+            <input type="number" step="0.01" name="value" required size="10">
+        </span>
+        <span><button type="submit">Сконвертировать</button></span>
+    </form>
+    <p>Сумма = <span th:text="${sum}"></span></p>
+</div>
+</body>
+</html>
