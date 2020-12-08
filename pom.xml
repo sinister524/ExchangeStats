@@ -12,6 +12,7 @@
 	<artifactId>TestTuskFromEmphasoft</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>TestTuskFromEmphasoft</name>
+	<packaging>jar</packaging>
 	<description>Test tusk from Emphasoft</description>
 
 	<properties>

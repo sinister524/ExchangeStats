@@ -1,19 +1,20 @@
 package com.emphasoft.testtusk.TestTuskFromEmphasoft.controller;
 
-import com.emphasoft.testtusk.TestTuskFromEmphasoft.service.AccountService;
 import com.emphasoft.testtusk.TestTuskFromEmphasoft.service.ExchangeService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
 
 @Controller
 @AllArgsConstructor
-@SessionAttributes("sum")
 @RequestMapping("/exchange")
 @Log4j2
 public class ExchangeController {
@@ -42,6 +43,6 @@ public class ExchangeController {
         } else {
             model.addAttribute("sum", exchangeService.exchange(from, to, value));
         }
-        return "redirect:/exchange";
+        return getConcertForm(model);
     }
 }
