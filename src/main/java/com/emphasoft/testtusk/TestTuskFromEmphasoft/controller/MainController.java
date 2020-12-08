@@ -13,4 +13,10 @@ public class MainController {
         log.info("Opening main page...");
         return "index";
     }
+
+    @GetMapping("/shutdown")
+    public String shutdown(){
+        System.exit(0);
+        return "redirect:/";
+    }
 }
