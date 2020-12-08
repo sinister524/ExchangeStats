@@ -12,7 +12,7 @@
 	<artifactId>TestTuskFromEmphasoft</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>TestTuskFromEmphasoft</name>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<description>Test tusk from Emphasoft</description>
 
 	<properties>
@@ -80,7 +80,6 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<defaultGoal>compile</defaultGoal>
 	</build>
 
 </project>
